@@ -18,7 +18,5 @@ export function ShowQuote({isLoading, data}){
         
     );
     const loading = (<span>Loading...</span>);
-    return <>
-      {isLoading ? loading : quote }
-    </>;
+    return <>{isLoading ? loading : quote}</>;
 }
