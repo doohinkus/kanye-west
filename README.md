@@ -8,4 +8,6 @@ This repo uses the following:
 * useState hook -> for managing state -> loading and data
 * react-spring -> for fading in text
 
-
+## MVP
+Here is the MVP on github pages.
+* https://doohinkus.github.io/kanye-west/
