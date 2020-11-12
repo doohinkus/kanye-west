@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@300&family=Big+Shoulders+Stencil+Text:wght@700&family=Passion+One&family=Turret+Road:wght@300&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Passion One', cursive;
 }
-
-.App-logo {
+img{
+  height: 40vmin;
+}
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -35,4 +40,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+  /* @media all and (max-width:30em){
+   .button{
+    display:block;
+    margin:0.4em auto;
+   }
+  } */
+
+.bouncy{
+  animation: bouncy 5s infinite linear;
+  position:relative;
+}
+
+@keyframes bouncy {
+  0% {top:0em;}
+  40% {top:0em;}
+  43% {top:-0.9em;}
+  46% {top:0em;}
+  48% {top:-0.4em;}
+  50% {top:0em;}
+  100% {top:0em;}
 }

@@ -1,0 +1,43 @@
+span{
+  /* font-family: 'Big Shoulders Stencil Display', cursive;
+  font-family: 'Big Shoulders Stencil Text', cursive; */
+  margin: .5em;
+  font-size: calc(1em + 1.5vw);
+  line-height: 1em;
+  display: block;
+  max-width: 70vw;
+  color: #efefef;
+  /* letter-spacing: .009em; */
+}
+h1{
+    margin: .25em;
+    color:#ff6363;
+    background: -webkit-linear-gradient(#fc4a1a, #f7b733);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: inherit;
+    font-family: inherit;
+    margin: .25em;
+    cursor: pointer;
+}
+.button:hover{
+    color:#000000;
+    background-color:#FFFFFF;
+}
+@media all and (max-width:30em){
+     .button{
+        display:block;
+        margin:0.4em auto;
+    }
+}
+  
