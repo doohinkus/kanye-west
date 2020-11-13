@@ -34,6 +34,9 @@ h1{
     color:#000000;
     background-color:#FFFFFF;
 }
+button:active ~ .invert{
+    filter: invert(1);
+}
 @media all and (max-width:30em){
      .button{
         display:block;
