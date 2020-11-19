@@ -1,6 +1,8 @@
 import {Fragment, useState, useMemo} from 'react';
 import {ShowQuote} from './ShowQuote';
 import {Kanye} from './Kayne';
+import { KanyeMotion } from './KayneMotion';
+import { BounceIn } from './BounceIn';
 import {useFetch} from '../hooks/useFetch';
 import './Quote.css';
 
@@ -17,9 +19,14 @@ export function Quote(){
 
   return (
       <> 
-        <Kanye {...toggle} />
+        {/* <Kanye {...toggle} /> */}
+        <KanyeMotion {...toggle}/>
         <h1>Kanye Says</h1>
-        <ShowQuote {...state} />
+        <BounceIn {...toggle}>
+         <span>
+            &ldquo;{state.data}&rdquo;
+         </span>
+        </BounceIn>
         <button className="button" 
           onClick={() => toggleQuote()}>
             Get Quote
