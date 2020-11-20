@@ -22,7 +22,19 @@ export function Quote(){
         {/* <Kanye {...toggle} /> */}
         <KanyeMotion {...toggle}/>
         <h1>Kanye Says</h1>
-        <BounceIn {...toggle}>
+        {/* <BounceIn delay={.3} {...toggle}>
+         <span>
+            &ldquo;{state.data}&rdquo;
+         </span>
+        </BounceIn> */}
+          {/* {
+            state && state.data && state.data.split(" ").map(word => {
+              return <BounceIn delay={Math.random()} {...toggle}>
+                {word}
+              </BounceIn>
+            })
+          } */}
+        <BounceIn delay={.3} {...toggle}>
          <span>
             &ldquo;{state.data}&rdquo;
          </span>
