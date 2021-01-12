@@ -7,40 +7,18 @@ import {useFetch} from '../hooks/useFetch';
 import './Quote.css';
 
 export function Quote(){
-  const [toggle, setToggle] = useState({toggle: false});
-  const [state] = useFetch('https://api.kanye.rest?format=text', toggle);
-  // const [kanyeStyle] = useKanye(toggle);
- 
-
-  function toggleQuote(){
-      setToggle({toggle: !toggle.toggle});
-  }
-
-
+  const [{quote, toggle}, setToggle] = useFetch();
   return (
       <> 
-        {/* <Kanye {...toggle} /> */}
         <KanyeMotion {...toggle}/>
         <h1>Kanye Says</h1>
-        {/* <BounceIn delay={.3} {...toggle}>
-         <span>
-            &ldquo;{state.data}&rdquo;
-         </span>
-        </BounceIn> */}
-          {/* {
-            state && state.data && state.data.split(" ").map(word => {
-              return <BounceIn delay={Math.random()} {...toggle}>
-                {word}
-              </BounceIn>
-            })
-          } */}
         <BounceIn delay={.3} {...toggle}>
-         <span>
-            &ldquo;{state.data}&rdquo;
+         <span data-testid="quote">
+            &ldquo;{quote}&rdquo;
          </span>
         </BounceIn>
-        <button className="button" 
-          onClick={() => toggleQuote()}>
+        <button data-testid="getQuote" className="button" 
+          onClick={() => setToggle({toggle: !toggle.toggle})}>
             Get Quote
         </button>
       </>

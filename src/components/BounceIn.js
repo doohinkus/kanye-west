@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 
 export function BounceIn({toggle, ...props}){
+  // console.log("asdf",toggle)
     return (
         <motion.div key={toggle} initial="pageInitial" animate="pageAnimate" variants={{
             pageInitial: {
