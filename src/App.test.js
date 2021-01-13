@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom'
 import React from 'react'
-import { act, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react';
+import { renderHook, act } from '@testing-library/react-hooks'
 import userEvent from '@testing-library/user-event'
 import { setupServer } from 'msw/node'
 import { rest } from 'msw'

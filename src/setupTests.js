@@ -8,7 +8,7 @@ import { server } from './mocks/server.js'
 
 beforeAll(() => {
   // Enable the mocking in tests.
-  console.log("prepping")
+  // console.log("prepping")
   server.listen()
 })
 
@@ -18,7 +18,7 @@ afterEach(() => {
 })
 
 afterAll(() => {
-  console.log("closing")
+  // console.log("closing")
   // Clean up once the tests are done.
   server.close()
 })
