@@ -2,15 +2,13 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export function useFetch(){
-    // COMMON PATTERN USE VARIABLE FOR CLEANUP
-    const [quote, setQuote] = useState("");
-    const [toggle, setToggle] = useState({toggle: false});
+  const [quote, setQuote] = useState("");
+  const [toggle, setToggle] = useState({toggle: false});
+  const endpoint =  "https://api.kanye.rest?format=text";
 
-    const endpoint =  "https://api.kanye.rest?format=text";
-    // below code allows endpoint to be dynamically set
-    // const [endpoint, setEndpoint] = useState("https://api.kanye.rest?format=text")
-    useEffect(() => {
-        let loaded = false;
+  useEffect(() => {
+    // COMMON PATTERN USE VARIABLE FOR CLEANUP
+    let loaded = false;
        async function fetchQuote(){
          const quote = await axios.get(endpoint);
          const { data } = await quote;
@@ -19,6 +17,7 @@ export function useFetch(){
              setQuote(data);
            }
      }
+     
      fetchQuote();
 
     // COMMON PATTERN USE VARIABLE FOR CLEANUP
