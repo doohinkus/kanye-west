@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "_change homepage": "to get service worker to work, revert back for deploy",
-  "_homepage": "https://doohinkus.github.io/kanye-west",
-  "homepage": "/kayne-rest",
+  "homepage": "https://doohinkus.github.io/kanye-west",
+  "_homepage": "/kayne-rest",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.2",
