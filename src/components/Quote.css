@@ -1,7 +1,7 @@
-span{
+span {
   /* font-family: 'Big Shoulders Stencil Display', cursive;
   font-family: 'Big Shoulders Stencil Text', cursive; */
-  margin: .5em;
+  margin: 0.5em;
   font-size: calc(1em + 1.5vw);
   line-height: 1em;
   display: block;
@@ -9,38 +9,61 @@ span{
   color: #efefef;
   /* letter-spacing: .009em; */
 }
-h1{
-    margin: .25em;
-    color:#ff6363;
-    background: -webkit-linear-gradient(#fc4a1a, #f7b733);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+h1 {
+  margin: 0.25em;
+  color: #ff6363;
+  background: -webkit-linear-gradient(#fc4a1a, #f7b733);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.button{
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: inherit;
-    font-family: inherit;
-    margin: .25em;
-    cursor: pointer;
+.button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: inherit;
+  font-family: inherit;
+  margin: 0.25em;
+  cursor: pointer;
 }
-.button:hover{
-    color:#000000;
-    background-color:#FFFFFF;
+.button:hover {
+  color: #000000;
+  background-color: #ffffff;
 }
-button:active ~ .invert{
-    filter: invert(1);
+button:active ~ .invert {
+  filter: invert(1);
 }
-@media all and (max-width:30em){
-     .button{
-        display:block;
-        margin:0.4em auto;
-    }
+@media all and (max-width: 30em) {
+   .button {
+    display: block;
+    margin: 0.4em auto;
+  }
 }
-  
+
+@keyframes quote {
+  0% {
+    transform: scale(1) rotate(10deg);
+  }
+  10% {
+    transform: scale(0.85);
+  }
+  30% {
+    transform: scale(1.08) rotate(-10deg);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.quote {
+  animation: spring 0.8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  /* filter: drop-shadow(0px 0px 30px rgba(244, 244, 244, 0.5)); */
+}

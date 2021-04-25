@@ -1,26 +1,30 @@
-import {Fragment, useState, useMemo} from 'react';
-import {ShowQuote} from './ShowQuote';
-import {Kanye} from './Kayne';
-import { KanyeMotion } from './KayneMotion';
-import { BounceIn } from './BounceIn';
-import {useFetch} from '../hooks/useFetch';
-import './Quote.css';
+import { Fragment, useState, useMemo } from "react";
+import { useFetch } from "../hooks/useFetch";
+import "./Quote.css";
+import Animate from "./Animate";
+import KanyeFace from "./KanyeFace";
 
-export function Quote(){
-  const [{quote, toggle}, setToggle] = useFetch();
+export function Quote() {
+  const [quote, toggle, setToggle] = useFetch();
+
   return (
-      <> 
-        <KanyeMotion {...toggle}/>
-        <h1>Kanye Says</h1>
-        <BounceIn delay={.3} {...toggle}>
-         <span data-testid="quote">
-            &ldquo;{quote}&rdquo;
-         </span>
-        </BounceIn>
-        <button data-testid="getQuote" className="button" 
-          onClick={() => setToggle({toggle: !toggle.toggle})}>
-            Get Quote
-        </button>
-      </>
-  )
+    <>
+      <Animate toggle={toggle} rotate={true}>
+        <KanyeFace />
+      </Animate>
+      <h1>Kanye Says</h1>
+
+      <Animate toggle={toggle} rotate={false}>
+        <span data-testid="quote">&ldquo;{quote}&rdquo;</span>
+      </Animate>
+      <button
+        data-testid="getQuote"
+        className="button"
+        onMouseDown={() => setToggle(false)}
+        onMouseUp={() => setToggle(true)}
+      >
+        Get Quote
+      </button>
+    </>
+  );
 }

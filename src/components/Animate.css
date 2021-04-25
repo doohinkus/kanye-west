@@ -1,0 +1,48 @@
+@keyframes spring {
+  0% {
+    transform: scale(1) rotate(10deg);
+  }
+  10% {
+    transform: scale(0.85);
+  }
+  30% {
+    transform: scale(1.08) rotate(-10deg);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes springNoRotate {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.85);
+  }
+  30% {
+    transform: scale(1.08);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.spring {
+  animation: spring 0.8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  /* filter: drop-shadow(0px 0px 30px rgba(244, 244, 244, 0.5)); */
+}
+.springNoRotate {
+  animation: springNoRotate 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+.compressed {
+  transform: scale(0.9);
+}

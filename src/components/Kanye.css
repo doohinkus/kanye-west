@@ -1,9 +1,16 @@
-.kanye{
-    animation: kanyeGlow 10s infinite;
+.kanye {
+  animation: kanyeGlow 10s infinite;
+  filter: drop-shadow(0px 0px 30px rgba(244, 244, 244, 0.5));
 }
 
-@keyframes kanyeGlow{
-    0% {filter: drop-shadow(0px 0px 30px rgba(244, 244, 244, 0.5));}
-    50% {filter: drop-shadow(0px 0px 40px rgba(144, 144, 144, 0.5));}
-    100% {filter: drop-shadow(0px 0px 30px rgba(244, 244, 244, 0.5));}
+@keyframes kanyeGlow {
+  0% {
+    filter: drop-shadow(0px 0px 30px rgba(244, 244, 244, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0px 0px 40px rgba(144, 144, 144, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0px 0px 30px rgba(244, 244, 244, 0.5));
+  }
 }

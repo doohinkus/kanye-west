@@ -12,7 +12,7 @@ export function useFetch() {
     async function fetchQuote() {
       const quote = await axios.get(endpoint);
       const { data } = await quote;
-      // console.log("QUOTE>>>>>", data.quote);
+      console.log("QUOTE>>>>>", data);
       if (!loaded && data) {
         setQuote(data.quote);
       }
@@ -29,5 +29,5 @@ export function useFetch() {
     };
     // COMMON PATTERN USE VARIABLE FOR CLEANUP
   }, [toggle]);
-  return [{ quote, toggle }, setToggle];
+  return [quote, toggle, setToggle];
 }
