@@ -1,4 +1,3 @@
-import { Fragment, useState, useMemo } from "react";
 import { useFetch } from "../hooks/useFetch";
 import "./Quote.css";
 import Animate from "./Animate";

@@ -1,4 +1,3 @@
-import React from "react";
 import "./Animate.css";
 
 export default function Animate({ toggle = false, rotate = false, children }) {
