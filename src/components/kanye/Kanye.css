@@ -14,3 +14,26 @@
     filter: drop-shadow(0px 0px 30px rgba(244, 244, 244, 0.5));
   }
 }
+
+@keyframes quote {
+  0% {
+    transform: scale(1) rotate(10deg);
+  }
+  10% {
+    transform: scale(0.85);
+  }
+  30% {
+    transform: scale(1.08) rotate(-10deg);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.quote {
+  animation: quote 0.8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
