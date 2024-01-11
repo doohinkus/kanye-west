@@ -10,7 +10,7 @@
   }
 }
 
-@keyframes quote {
+@keyframes wiggle {
   0% {
     transform: scale(1) rotate(10deg);
   }
@@ -32,12 +32,9 @@
   animation: kanyeGlow 10s infinite;
   filter: drop-shadow(0px 0px 30px rgba(244, 244, 244, 0.5));
 }
-.kanye-rest {
-  filter: drop-shadow(0px 0px 30px rgba(244, 244, 244, 0.5));
-}
 
-.quote {
-  animation: quote 0.8s;
+.kanye-wiggle {
+  animation: wiggle 0.8s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
 }
