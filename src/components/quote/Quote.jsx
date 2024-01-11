@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import "./Quote.css";
-import Animate from "./Animate";
-import KanyeFace from "./KanyeFace";
+import KanyeFace from "../kanye/KanyeFace";
 
 const endpoint = "https://api.kanye.rest?format=text";
 
@@ -17,14 +16,10 @@ export function Quote() {
   }
   return (
     <>
-      <Animate>
-        <KanyeFace />
-      </Animate>
+      <KanyeFace />
       <h1>Kanye Says</h1>
 
-      <Animate>
-        <span data-testid="quote">&ldquo;{quote}&rdquo;</span>
-      </Animate>
+      <span data-testid="quote">&ldquo;{quote}&rdquo;</span>
       <button
         data-testid="getQuote"
         className="button"
