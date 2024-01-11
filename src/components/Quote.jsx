@@ -1,26 +1,34 @@
-import { useFetch } from "../hooks/useFetch";
+import axios from "axios";
+import { useState } from "react";
 import "./Quote.css";
 import Animate from "./Animate";
 import KanyeFace from "./KanyeFace";
 
-export function Quote() {
-  const [quote, toggle, setToggle] = useFetch();
+const endpoint = "https://api.kanye.rest?format=text";
 
+export function Quote() {
+  const [quote, setQuote] = useState("Deviate.");
+  async function handleQuoteClicked() {
+    const data = await axios.get(endpoint);
+    const {
+      data: { quote },
+    } = await data;
+    setQuote(quote);
+  }
   return (
     <>
-      <Animate toggle={toggle} rotate={true}>
+      <Animate>
         <KanyeFace />
       </Animate>
       <h1>Kanye Says</h1>
 
-      <Animate toggle={toggle} rotate={false}>
+      <Animate>
         <span data-testid="quote">&ldquo;{quote}&rdquo;</span>
       </Animate>
       <button
         data-testid="getQuote"
         className="button"
-        onMouseDown={() => setToggle(false)}
-        onMouseUp={() => setToggle(true)}
+        onClick={handleQuoteClicked}
       >
         Get Quote
       </button>
