@@ -29,7 +29,10 @@
 }
 
 .kanye {
-  /* animation: kanyeGlow 10s infinite; */
+  animation: kanyeGlow 10s infinite;
+  filter: drop-shadow(0px 0px 30px rgba(244, 244, 244, 0.5));
+}
+.kanye-rest {
   filter: drop-shadow(0px 0px 30px rgba(244, 244, 244, 0.5));
 }
 
