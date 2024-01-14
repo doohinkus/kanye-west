@@ -2,32 +2,42 @@ import axios from "axios";
 import { useState } from "react";
 import "./Quote.css";
 import KanyeFace from "../kanye/KanyeFace";
+import Bounce from "../bounce/Bounce";
+import Wiggle from "../wiggle/Wiggle";
+import { delay } from "../../util";
 
 const endpoint = "https://api.kanye.rest?format=text";
-
-function delay({ callback, ms }) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(callback()), ms);
-  });
-}
 
 export function Quote() {
   const [quote, setQuote] = useState("Deviate.");
   const [animationRequested, setAnimationRequested] = useState(false);
+  function handleQuote(quote) {
+    setQuote(quote);
+    setAnimationRequested(true);
+    delay({ callback: () => setAnimationRequested(false), ms: 1000 });
+  }
   async function handleQuoteClicked() {
-    const data = await axios.get(endpoint);
-    const {
-      data: { quote },
-    } = await data;
-    await setQuote(quote);
-    await setAnimationRequested(true);
-    await delay({ callback: () => setAnimationRequested(false), ms: 1000 });
+    try {
+      const data = await axios.get(endpoint);
+      const {
+        data: { quote },
+      } = await data;
+      handleQuote(quote);
+    } catch (error) {
+      handleQuote(
+        "They're trying to silence me. My API is down. But my Spirit is up!"
+      );
+    }
   }
   return (
     <>
-      <KanyeFace _class={`${animationRequested ? "quote" : ""}`} />
+      <Wiggle animationRequested={animationRequested}>
+        <KanyeFace />
+      </Wiggle>
       <h1>Kanye Says</h1>
-      <span data-testid="quote">&ldquo;{quote}&rdquo;</span>
+      <Bounce animationRequested={animationRequested}>
+        <span data-testid="quote">&ldquo;{quote}&rdquo;</span>
+      </Bounce>
 
       <button
         data-testid="getQuote"
