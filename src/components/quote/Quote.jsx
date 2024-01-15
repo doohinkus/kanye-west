@@ -1,32 +1,32 @@
-import axios from "axios";
 import { useState } from "react";
 import "./Quote.css";
 import KanyeFace from "../kanye/KanyeFace";
 import Bounce from "../bounce/Bounce";
 import Wiggle from "../wiggle/Wiggle";
-import { delay } from "../../util";
-
-const endpoint = "https://api.kanye.rest?format=text";
+import Audio from "../audio/Audio";
+import { delay, kanyeApi, voiceoverGirl } from "../../util";
 
 export function Quote() {
   const [quote, setQuote] = useState("Deviate.");
+  const [audio, setAudio] = useState(null);
   const [animationRequested, setAnimationRequested] = useState(false);
   function handleQuote(quote) {
     setQuote(quote);
+
+    voiceoverGirl
+      .getVoiceOver({ text: quote, voice: "en_us_001" })
+      .then((data) => setAudio(data.data))
+      .catch(() => setAudio(null));
     setAnimationRequested(true);
     delay({ callback: () => setAnimationRequested(false), ms: 1000 });
   }
   async function handleQuoteClicked() {
     try {
-      const data = await axios.get(endpoint);
-      const {
-        data: { quote },
-      } = await data;
+      const quote = await kanyeApi();
       handleQuote(quote);
     } catch (error) {
-      handleQuote(
-        "They're trying to silence me. My API is down. But my Spirit is up!"
-      );
+      handleQuote("oops");
+      console.log(error);
     }
   }
   return (
@@ -46,6 +46,7 @@ export function Quote() {
       >
         Get Quote
       </button>
+      <Audio src={audio} />
     </>
   );
 }

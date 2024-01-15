@@ -13,6 +13,7 @@
 .kanye {
   animation: kanyeGlow 10s infinite;
   filter: drop-shadow(0px 0px 30px rgba(244, 244, 244, 0.5));
-  width: calc(100vh * 0.37);
+  width: 35vh;
   height: auto;
+  max-width: 10em;
 }
