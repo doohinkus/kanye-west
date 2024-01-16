@@ -1,12 +1,6 @@
 import axios from "axios";
 
-export function delay({ callback, ms }) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(callback()), ms);
-  });
-}
-
-class VoiceOver {
+class VoiceOverAPI {
   constructor() {
     this.defaultParams = {
       method: "POST",
@@ -34,19 +28,24 @@ class VoiceOver {
   }
 }
 
-export async function kanyeApi() {
-  const endpoint = "https://api.kanye.rest?format=text";
-
-  try {
-    const data = await axios.get(endpoint);
-    const {
-      data: { quote },
-    } = await data;
-    return quote;
-  } catch (error) {
-    return "They trying to silence me. My API is down, but my Spirit is up!";
+class KanyeApi {
+  constructor() {
+    this.endpoint = "https://api.kanye.rest?format=text";
+  }
+  async getKanyeQuote() {
+    try {
+      const data = await axios.get(this.endpoint);
+      const {
+        data: { quote },
+      } = await data;
+      return quote;
+    } catch (error) {
+      return "They trying to silence me. My API is down, but my Spirit is up!";
+    }
   }
 }
 
-const voiceoverGirl = new VoiceOver();
-export { voiceoverGirl };
+const voiceoverGirl = new VoiceOverAPI();
+const kanyeQuote = new KanyeApi();
+
+export { voiceoverGirl, kanyeQuote };

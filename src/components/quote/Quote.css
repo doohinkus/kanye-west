@@ -31,6 +31,9 @@ h1 {
   color: #000000;
   background-color: #ffffff;
 }
+.button:disabled {
+  background-color: gray;
+}
 button:active ~ .invert {
   filter: invert(1);
 }

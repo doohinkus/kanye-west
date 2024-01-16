@@ -1,32 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Quote.css";
 import KanyeFace from "../kanye/KanyeFace";
 import Bounce from "../bounce/Bounce";
 import Wiggle from "../wiggle/Wiggle";
 import Audio from "../audio/Audio";
-import { delay, kanyeApi, voiceoverGirl } from "../../util";
+import { voiceoverGirl, kanyeQuote } from "../../apis";
 
 export function Quote() {
   const [quote, setQuote] = useState("Deviate.");
   const [audio, setAudio] = useState(null);
   const [animationRequested, setAnimationRequested] = useState(false);
-  function handleQuote(quote) {
-    setQuote(quote);
 
-    voiceoverGirl
-      .getVoiceOver({ text: quote, voice: "en_us_001" })
-      .then((data) => setAudio(data.data))
-      .catch(() => setAudio(null));
-    setAnimationRequested(true);
-    delay({ callback: () => setAnimationRequested(false), ms: 1000 });
-  }
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (animationRequested) {
+        setAnimationRequested(false);
+      }
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [quote]);
+
   async function handleQuoteClicked() {
+    if (animationRequested) return;
     try {
-      const quote = await kanyeApi();
-      handleQuote(quote);
-    } catch (error) {
-      handleQuote("oops");
-      console.log(error);
+      const quote = await kanyeQuote.getKanyeQuote();
+
+      setQuote(quote);
+      setAnimationRequested(true);
+
+      const voice = await voiceoverGirl.getVoiceOver({
+        text: quote,
+        voice: "en_us_001",
+      });
+
+      setAudio(voice.data);
+    } catch {
+      setAudio(null);
+      setQuote(
+        "They trying to silence me. My API is down, but my Spirit is up!"
+      );
     }
   }
   return (
