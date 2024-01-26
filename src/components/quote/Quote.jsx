@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import "./Quote.css";
 import KanyeFace from "../kanye/KanyeFace";
-import Bounce from "../bounce/Bounce";
-import Wiggle from "../wiggle/Wiggle";
+import Animation from "../animation/Animation";
 import Audio from "../audio/Audio";
 import { voiceoverGirl, kanyeQuote } from "../../apis";
+import { animations } from "../animation/constants";
 
 export function Quote() {
   const [quote, setQuote] = useState("Deviate.");
@@ -43,13 +43,19 @@ export function Quote() {
   }
   return (
     <>
-      <Wiggle animationRequested={animationRequested}>
+      <Animation
+        animationRequested={animationRequested}
+        animation={animations.wiggle}
+      >
         <KanyeFace />
-      </Wiggle>
+      </Animation>
       <h1>Kanye Says</h1>
-      <Bounce animationRequested={animationRequested}>
+      <Animation
+        animationRequested={animationRequested}
+        animation={animations.bouncy}
+      >
         <span data-testid="quote">&ldquo;{quote}&rdquo;</span>
-      </Bounce>
+      </Animation>
 
       <button
         data-testid="getQuote"
